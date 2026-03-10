@@ -22,7 +22,6 @@
         --radius:  16px;
     }
 
-    /* ===== DARK MODE VARIABLES ===== */
     html.dark {
         --surface: #0f1923;
         --white:   #1a2535;
@@ -31,7 +30,6 @@
         --border:  #1e2d42;
     }
 
-    /* ===== TRANSISI HALUS ===== */
     body, .vm-section, .news-section, .social-section, .ig-section,
     .vm-card, .news-card, .social-card, .social-icon-wrap,
     .section-header h2, .section-header p, .eyebrow,
@@ -49,10 +47,8 @@
         overflow-x: hidden;
     }
     html.dark body { background: var(--surface); color: var(--text); }
-
     html { scroll-behavior: smooth; }
 
-    /* ===== HEADER ===== */
     header {
         background: var(--navy);
         padding: 0 56px;
@@ -83,7 +79,6 @@
     nav ul li a:hover { color: var(--white); background: rgba(255,255,255,0.08); }
     nav ul li a.active { color: var(--white); background: var(--accent); }
 
-    /* ===== DARK MODE TOGGLE BUTTON ===== */
     .dark-toggle {
         width: 38px; height: 38px; border-radius: 10px;
         background: rgba(255,255,255,0.07);
@@ -96,11 +91,7 @@
         margin-left: 8px;
         outline: none;
     }
-    .dark-toggle:hover {
-        background: rgba(255,255,255,0.14);
-        color: var(--gold-lt);
-        border-color: rgba(240,165,0,0.4);
-    }
+    .dark-toggle:hover { background: rgba(255,255,255,0.14); color: var(--gold-lt); border-color: rgba(240,165,0,0.4); }
     .dark-toggle svg { transition: transform 0.45s ease; pointer-events: none; }
     .dark-toggle:hover svg { transform: rotate(22deg); }
     .dark-toggle .icon-moon { display: block; }
@@ -108,7 +99,6 @@
     html.dark .dark-toggle .icon-moon { display: none; }
     html.dark .dark-toggle .icon-sun  { display: block; }
 
-    /* ===== HERO SLIDESHOW ===== */
     .hero {
         position: relative; height: 580px; overflow: hidden;
         display: flex; align-items: center; justify-content: center;
@@ -155,7 +145,6 @@
     .hero-caption-text.visible { opacity: 1; }
     .hero-progress { position: absolute; bottom: 0; left: 0; height: 3px; background: linear-gradient(90deg, var(--gold), var(--gold-lt)); z-index: 3; width: 0%; }
 
-    /* ===== SECTION WRAPPER ===== */
     .section-wrap { max-width: 1100px; margin: 0 auto; padding: 72px 40px; }
     .section-header { margin-bottom: 44px; }
     .section-header .eyebrow { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--accent); margin-bottom: 10px; }
@@ -164,7 +153,6 @@
     .section-header p { font-size: 15px; color: var(--muted); line-height: 1.75; margin-top: 10px; max-width: 480px; }
     .section-divider { width: 48px; height: 3px; background: linear-gradient(90deg, var(--accent), var(--gold)); border-radius: 2px; margin-top: 14px; }
 
-    /* ===== VISION & MISSION ===== */
     .vm-section { background: var(--white); }
     html.dark .vm-section { background: #141f2e; }
     .vm-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
@@ -182,7 +170,6 @@
     html.dark .mission-list li { color: #94a3b8; }
     .mission-list li::before { content: '✓'; width: 18px; height: 18px; border-radius: 50%; background: var(--accent); color: var(--white); font-size: 9px; font-weight: 900; flex-shrink: 0; display: flex; align-items: center; justify-content: center; margin-top: 2px; }
 
-    /* ===== NEWS ===== */
     .news-section { background: var(--surface); }
     html.dark .news-section { background: #0f1923; }
     .news-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
@@ -209,7 +196,6 @@
     html.dark .news-readmore { color: #60a5fa; }
     .news-readmore:hover { gap: 10px; }
 
-    /* ===== WEATHER BAR ===== */
     .wx-bar { background: #0d1e38; border-bottom: 1px solid rgba(255,255,255,0.07); padding: 0 56px; height: 52px; display: flex; align-items: center; gap: 0; overflow: hidden; position: relative; }
     html.dark .wx-bar { background: #080f1a; }
     .wx-bar-current { display: flex; align-items: center; gap: 10px; flex-shrink: 0; padding-right: 20px; border-right: 1px solid rgba(255,255,255,0.08); height: 32px; }
@@ -237,7 +223,6 @@
     .wx-sk { background: rgba(255,255,255,0.07); border-radius: 6px; animation: wxPulse 1.6s ease-in-out infinite; display: inline-block; }
     @keyframes wxPulse { 0%,100%{opacity:.4} 50%{opacity:.9} }
 
-    /* ===== SOCIAL MEDIA ===== */
     .social-section { background: var(--white); }
     html.dark .social-section { background: #141f2e; }
     .social-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
@@ -253,7 +238,6 @@
     .social-handle { font-size: 12px; color: var(--muted); margin-top: 2px; }
     html.dark .social-handle { color: #64748b; }
 
-    /* ===== FOOTER ===== */
     footer { background: var(--navy); color: var(--white); padding: 0; }
     html.dark footer { background: #060d18; }
     .footer-location { background: #0d1e38; border-bottom: 1px solid rgba(255,255,255,0.06); padding: 20px 56px; }
@@ -274,11 +258,9 @@
     .footer-col a:hover { color: var(--white); }
     .footer-bottom { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; font-size: 12.5px; color: rgba(255,255,255,0.3); }
 
-    /* ===== SCROLL ANIMATION ===== */
     .fade-up { opacity: 0; transform: translateY(32px); transition: opacity 0.65s ease, transform 0.65s ease; }
     .fade-up.visible { opacity: 1; transform: translateY(0); }
 
-    /* ===== INSTAGRAM FEED ===== */
     .ig-section { background: var(--surface); border-top: 1px solid var(--border); }
     html.dark .ig-section { background: #0f1923; border-color: #1e2d42; }
     .ig-header-row { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 28px; gap: 20px; flex-wrap: wrap; }
@@ -324,7 +306,6 @@
     .ig-view-all:hover { border-color: #dc2743; color: #dc2743; background: #fff5f5; }
     html.dark .ig-view-all:hover { background: #2d1515; }
 
-    /* ===== RESPONSIVE ===== */
     @media (max-width: 1024px) {
         .news-grid { grid-template-columns: repeat(2, 1fr); }
         .social-grid { grid-template-columns: repeat(2, 1fr); }
@@ -381,7 +362,6 @@
                 <li><a href="{{ route('information') }}">Informasi Pelayanan</a></li>
             </ul>
         </nav>
-        {{-- Dark Mode Toggle --}}
         <button class="dark-toggle" id="darkToggle" title="Ganti tema" aria-label="Toggle dark mode">
             <svg class="icon-moon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
@@ -433,6 +413,14 @@
 {{-- ===== HERO ===== --}}
 <section class="hero">
     <div class="hero-slides-wrapper" id="heroSlidesWrapper">
+        @forelse($heroSlides as $index => $slide)
+        <div class="hero-slide {{ $index === 0 ? 'active' : '' }}"
+             data-caption="{{ $slide->caption ?? '' }}">
+            <img src="{{ Storage::disk('public')->url($slide->foto) }}"
+                 alt="{{ $slide->caption ?? 'Slide '.($index+1) }}"
+                 loading="{{ $index === 0 ? 'eager' : 'lazy' }}">
+        </div>
+        @empty
         <div class="hero-slide active" data-caption="Melayani Masyarakat Gunungkidul">
             <img src="{{ asset('images/hero/slide1.jpg') }}" alt="Slide 1">
         </div>
@@ -445,6 +433,7 @@
         <div class="hero-slide" data-caption="Bersama Menjaga Nusantara">
             <img src="{{ asset('images/hero/slide4.jpg') }}" alt="Slide 4">
         </div>
+        @endforelse
     </div>
     <div class="hero-overlay"></div>
     <div class="hero-content">
@@ -646,7 +635,6 @@
             <a href="{{ $social['url'] }}" target="_blank" rel="noopener" class="social-card social-card--{{ $social['platform'] ?? strtolower(str_replace(' ', '', $social['name'])) }}">
                 <div class="social-icon-wrap">
                     @php $platform = $social['platform'] ?? strtolower(str_replace([' ', '/'], '', $social['name'])); @endphp
-
                     @if($platform === 'instagram')
                         <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" width="36" height="36">
                             <defs><radialGradient id="ig-grad" cx="30%" cy="107%" r="150%"><stop offset="0%" stop-color="#ffd600"/><stop offset="25%" stop-color="#ff7a00"/><stop offset="50%" stop-color="#ff0069"/><stop offset="75%" stop-color="#d300c5"/><stop offset="100%" stop-color="#7638fa"/></radialGradient></defs>
@@ -746,36 +734,23 @@
 
 @push('scripts')
 <script>
-// ===== DARK MODE — harus paling atas =====
 (function () {
     const html = document.documentElement;
     const btn  = document.getElementById('darkToggle');
     const KEY  = 'theme';
-
-    function applyTheme(dark) {
-        dark ? html.classList.add('dark') : html.classList.remove('dark');
-    }
-
-    // Init dari localStorage
+    function applyTheme(dark) { dark ? html.classList.add('dark') : html.classList.remove('dark'); }
     applyTheme(localStorage.getItem(KEY) === 'dark');
-
-    // Toggle on click
     btn.addEventListener('click', function () {
         const isDark = html.classList.toggle('dark');
         localStorage.setItem(KEY, isDark ? 'dark' : 'light');
     });
-
-    // Ikuti preferensi sistem jika belum pernah dipilih manual
     if (!localStorage.getItem(KEY)) {
         const mq = window.matchMedia('(prefers-color-scheme: dark)');
         applyTheme(mq.matches);
-        mq.addEventListener('change', e => {
-            if (!localStorage.getItem(KEY)) applyTheme(e.matches);
-        });
+        mq.addEventListener('change', e => { if (!localStorage.getItem(KEY)) applyTheme(e.matches); });
     }
 })();
 
-// ===== HERO SLIDESHOW =====
 (function () {
     const wrapper     = document.getElementById('heroSlidesWrapper');
     const slides      = wrapper.querySelectorAll('.hero-slide');
@@ -837,7 +812,6 @@
     goTo(0); startTimer();
 })();
 
-// ===== NEWS SLIDESHOW =====
 function initNewsSlideshow() {
     document.querySelectorAll('[data-slideshow]').forEach(slideshow => {
         const slides = slideshow.querySelectorAll('.news-slide');
@@ -862,7 +836,6 @@ function initNewsSlideshow() {
 }
 document.addEventListener('DOMContentLoaded', initNewsSlideshow);
 
-// ===== INSTAGRAM — hide placeholder when real image loads =====
 document.querySelectorAll('.ig-item img').forEach(img => {
     if (img.complete && img.naturalWidth > 0) {
         const ph = img.nextElementSibling;
@@ -875,7 +848,6 @@ document.querySelectorAll('.ig-item img').forEach(img => {
     }
 });
 
-// ===== CUACA REAL-TIME =====
 (function () {
     const LAT = -7.9408, LON = 110.5993, TZ = 'Asia%2FJakarta';
     const WMO = {
@@ -920,13 +892,11 @@ document.querySelectorAll('.ig-item img').forEach(img => {
     $btn.addEventListener('click', load); load(); setInterval(load, 10*60*1000);
 })();
 
-// ===== SCROLL ANIMATION =====
 const observer = new IntersectionObserver(entries => {
     entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
 }, { threshold: 0.12, rootMargin: '0px 0px -80px 0px' });
 document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 
-// Smooth anchor scroll
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();

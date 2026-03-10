@@ -7,40 +7,23 @@
 <style>
 :root { --navy:#0a1628;--blue:#1a3a6e;--accent:#2563eb;--gold:#f0a500;--gold-lt:#fbbf24;--surface:#f4f6fa;--white:#ffffff;--text:#1a1f2e;--muted:#6b7280;--border:#e2e8f0;--radius:16px; }
 *,*::before,*::after { margin:0; padding:0; box-sizing:border-box; }
-
-/* ===== DARK MODE ===== */
-html.dark {
-    --surface: #0f1923;
-    --white:   #1a2535;
-    --text:    #e2e8f0;
-    --muted:   #94a3b8;
-    --border:  #1e2d42;
+html.dark { --surface: #0f1923; --white: #1a2535; --text: #e2e8f0; --muted: #94a3b8; --border: #1e2d42; }
+body, .card, .vm-box, .notice, .card-title, .sambutan-text p, .mission-list li, .kapolres-name, .kapolres-title {
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
-
-body, .card, .vm-box, .notice,
-.card-title, .sambutan-text p, .mission-list li,
-.kapolres-name, .kapolres-title {
-    transition: background-color 0.3s ease, color 0.3s ease,
-                border-color 0.3s ease, box-shadow 0.3s ease;
-}
-
 body { font-family:'Plus Jakarta Sans',sans-serif; background:var(--surface); color:var(--text); overflow-x:hidden; }
 html.dark body { background: var(--surface); color: var(--text); }
-
 header { background:var(--navy); padding:0 56px; display:flex; justify-content:space-between; align-items:center; height:72px; position:sticky; top:0; z-index:1000; border-bottom:1px solid rgba(255,255,255,0.06); }
 .logo { display:flex; align-items:center; gap:14px; text-decoration:none; }
 .logo img { width:44px; height:44px; object-fit:contain; }
 .logo-text { display:flex; flex-direction:column; }
 .logo-text span:first-child { font-size:15px; font-weight:800; color:var(--white); line-height:1.2; }
 .logo-text span:last-child { font-size:11px; color:var(--gold); font-weight:500; letter-spacing:0.8px; text-transform:uppercase; }
-
 .header-right { display:flex; align-items:center; gap:4px; }
 nav ul { display:flex; list-style:none; gap:4px; }
 nav ul li a { text-decoration:none; color:rgba(255,255,255,0.65); font-size:13.5px; font-weight:600; padding:8px 16px; border-radius:8px; transition:all 0.2s; display:block; }
 nav ul li a:hover { color:var(--white); background:rgba(255,255,255,0.08); }
 nav ul li a.active { color:var(--white); background:var(--accent); }
-
-/* ===== DARK MODE TOGGLE ===== */
 .dark-toggle { width:38px; height:38px; border-radius:10px; background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.12); color:rgba(255,255,255,0.7); cursor:pointer; display:flex; align-items:center; justify-content:center; transition:all 0.25s; flex-shrink:0; margin-left:8px; outline:none; }
 .dark-toggle:hover { background:rgba(255,255,255,0.14); color:var(--gold-lt); border-color:rgba(240,165,0,0.4); }
 .dark-toggle svg { transition:transform 0.45s ease; pointer-events:none; }
@@ -49,8 +32,6 @@ nav ul li a.active { color:var(--white); background:var(--accent); }
 .dark-toggle .icon-sun  { display:none; }
 html.dark .dark-toggle .icon-moon { display:none; }
 html.dark .dark-toggle .icon-sun  { display:block; }
-
-/* ===== HERO ===== */
 .hero { position:relative; overflow:hidden; height:480px; }
 .hero-bg { position:absolute; inset:0; }
 .hero-bg img { width:100%; height:100%; object-fit:cover; display:block; }
@@ -65,43 +46,38 @@ html.dark .dark-toggle .icon-sun  { display:block; }
 .hero-breadcrumb a { color:rgba(255,255,255,0.65); text-decoration:none; transition:color 0.2s; }
 .hero-breadcrumb a:hover { color:var(--gold-lt); }
 .hero-breadcrumb span.sep { opacity:0.4; }
-
-/* ===== MAIN CONTENT ===== */
 .main { max-width:1100px; margin:0 auto; padding:52px 40px 80px; }
-
 .card { background:var(--white); border-radius:20px; border:1px solid var(--border); padding:40px; margin-bottom:24px; }
 html.dark .card { background:#1a2535; border-color:#1e2d42; }
-
 .card-title { font-size:22px; font-weight:800; color:var(--text); margin-bottom:20px; display:flex; align-items:center; gap:12px; }
 .card-title-icon { width:40px; height:40px; border-radius:12px; background:#dbeafe; display:flex; align-items:center; justify-content:center; font-size:18px; flex-shrink:0; }
 html.dark .card-title-icon { background:#1e3a5f; }
-
 .sambutan-grid { display:grid; grid-template-columns:220px 1fr; gap:40px; align-items:flex-start; }
 .kapolres-wrap { text-align:center; }
 .kapolres-img { width:100%; border-radius:16px; box-shadow:0 12px 32px rgba(10,22,40,0.15); margin-bottom:14px; }
 html.dark .kapolres-img { box-shadow:0 12px 32px rgba(0,0,0,0.4); }
 .kapolres-name { font-size:15px; font-weight:800; color:var(--text); line-height:1.3; margin-bottom:4px; }
 .kapolres-title { font-size:12px; color:var(--muted); font-weight:500; letter-spacing:0.5px; }
-.sambutan-text p { font-size:14.5px; line-height:1.9; color:#4b5563; margin-bottom:14px; }
-html.dark .sambutan-text p { color:#94a3b8; }
+.sambutan-text { font-size:14.5px; line-height:1.9; color:#4b5563; }
+html.dark .sambutan-text { color:#94a3b8; }
+.sambutan-text p { margin-bottom:14px; }
 .sambutan-text p:last-child { margin-bottom:0; }
-
 .vm-grid { display:grid; grid-template-columns:1fr 1fr; gap:20px; }
 .vm-box { background:var(--surface); border:1px solid var(--border); border-radius:16px; padding:28px 24px; position:relative; overflow:hidden; transition:background-color 0.3s ease, border-color 0.3s ease; }
 html.dark .vm-box { background:#0f1923; border-color:#1e2d42; }
 .vm-box::before { content:''; position:absolute; top:0; left:0; width:4px; height:100%; background:linear-gradient(180deg,var(--accent),var(--gold)); }
 .vm-box h4 { font-size:16px; font-weight:800; color:var(--text); margin-bottom:14px; display:flex; align-items:center; gap:8px; }
 .vm-box p { font-size:13.5px; line-height:1.85; color:var(--muted); }
-
 .mission-list { list-style:none; display:flex; flex-direction:column; gap:10px; }
 .mission-list li { display:flex; align-items:flex-start; gap:10px; font-size:13px; color:#4b5563; line-height:1.65; }
 html.dark .mission-list li { color:#94a3b8; }
 .mission-list li::before { content:'\2713'; width:17px; height:17px; border-radius:50%; background:var(--accent); color:var(--white); font-size:9px; font-weight:900; flex-shrink:0; display:flex; align-items:center; justify-content:center; margin-top:2px; }
-
 .struktur-img { width:100%; border-radius:14px; border:1px solid var(--border); }
 html.dark .struktur-img { border-color:#1e2d42; filter:brightness(0.85) contrast(1.05); }
-
-/* ===== FOOTER ===== */
+.sejarah-content { font-size:14.5px; line-height:1.9; color:#4b5563; }
+html.dark .sejarah-content { color:#94a3b8; }
+.sejarah-content p { margin-bottom:14px; }
+.sejarah-content p:last-child { margin-bottom:0; }
 footer { background:var(--navy); color:var(--white); padding:0; }
 html.dark footer { background:#060d18; }
 .footer-location { background:#0d1e38; border-bottom:1px solid rgba(255,255,255,0.06); padding:20px 56px; }
@@ -121,8 +97,6 @@ html.dark .footer-location { background:#080f1a; }
 .footer-col a,.footer-col p { display:block; font-size:13.5px; color:rgba(255,255,255,0.5); text-decoration:none; line-height:2.2; transition:color 0.2s; }
 .footer-col a:hover { color:var(--white); }
 .footer-bottom { max-width:1100px; margin:0 auto; display:flex; justify-content:space-between; align-items:center; font-size:12.5px; color:rgba(255,255,255,0.3); }
-
-/* ===== WEATHER BAR ===== */
 .wx-bar { background:#0d1e38; border-bottom:1px solid rgba(255,255,255,0.07); padding:0 56px; height:52px; display:flex; align-items:center; gap:0; overflow:hidden; }
 html.dark .wx-bar { background:#080f1a; }
 .wx-bar-current { display:flex; align-items:center; gap:10px; flex-shrink:0; padding-right:20px; border-right:1px solid rgba(255,255,255,0.08); height:32px; }
@@ -149,7 +123,6 @@ html.dark .wx-bar { background:#080f1a; }
 @keyframes wxSpin { to{transform:rotate(360deg)} }
 .wx-sk { background:rgba(255,255,255,0.07); border-radius:6px; animation:wxPulse 1.6s ease-in-out infinite; display:inline-block; }
 @keyframes wxPulse { 0%,100%{opacity:.4} 50%{opacity:.9} }
-
 @media (max-width:900px) { header{padding:0 24px} .hero{height:380px} .hero h1{font-size:38px} .main{padding:36px 24px 72px} .sambutan-grid{grid-template-columns:1fr} .kapolres-wrap{display:flex;align-items:center;gap:20px;text-align:left} .kapolres-img{width:100px;flex-shrink:0} .vm-grid{grid-template-columns:1fr} .footer-location{padding:18px 28px} .footer-main{padding:44px 28px 28px} .footer-grid{grid-template-columns:1fr 1fr} }
 @media (max-width:768px) { .wx-bar{padding:0 20px} .wx-bar-current{padding-right:12px} .wx-bar-desc{display:none} }
 @media (max-width:560px) { nav ul li a{padding:7px 11px;font-size:12px} .hero{height:300px} .hero h1{font-size:28px} .hero-inner{padding:0 20px} .footer-location-inner{flex-direction:column;align-items:flex-start} .maps-btn{width:100%;justify-content:center} .footer-grid{grid-template-columns:1fr} .footer-bottom{flex-direction:column;gap:8px;text-align:center} }
@@ -214,7 +187,12 @@ html.dark .wx-bar { background:#080f1a; }
 {{-- HERO --}}
 <section class="hero">
     <div class="hero-bg">
-        <img src="{{ asset('images/slideshow/foto1.jpeg') }}" alt="Polres Gunungkidul">
+        @if($heroSlides->isNotEmpty())
+            <img src="{{ Storage::disk('public')->url($heroSlides->first()->foto) }}"
+                 alt="{{ $heroSlides->first()->caption ?? 'Profil Polres Gunungkidul' }}">
+        @else
+            <img src="{{ asset('images/slideshow/foto1.jpeg') }}" alt="Polres Gunungkidul">
+        @endif
     </div>
     <div class="hero-inner">
         <div class="hero-tag">Tentang Kami</div>
@@ -230,37 +208,74 @@ html.dark .wx-bar { background:#080f1a; }
 
 {{-- MAIN --}}
 <div class="main">
+
+    {{-- SAMBUTAN KAPOLRES --}}
     <div class="card">
         <div class="card-title">Sambutan Kapolres</div>
         <div class="sambutan-grid">
             <div class="kapolres-wrap">
-                <img src="{{ asset('images/kapolres.JPEG') }}" class="kapolres-img" onerror="this.style.display='none'">
+                @if($profile['foto_kapolres'])
+                    <img src="{{ Storage::url($profile['foto_kapolres']) }}" class="kapolres-img" alt="Foto Kapolres" onerror="this.style.display='none'">
+                @else
+                    <img src="{{ asset('images/kapolres.JPEG') }}" class="kapolres-img" alt="Foto Kapolres" onerror="this.style.display='none'">
+                @endif
                 <div class="kapolres-name">{{ $profile['kapolres'] }}</div>
                 <div class="kapolres-title">Kapolres Gunungkidul</div>
             </div>
             <div class="sambutan-text">
-                <p>Selamat datang di website resmi {{ $profile['nama_instansi'] }}. Website ini menjadi sarana informasi publik dan bentuk komitmen kami dalam memberikan pelayanan terbaik kepada seluruh masyarakat Gunungkidul.</p>
-                <p>Kami hadir untuk memberikan rasa aman, menjaga ketertiban, serta menegakkan hukum dengan profesionalisme dan integritas tinggi. Setiap personel kami berkomitmen untuk melayani dengan sepenuh hati.</p>
-                <p>Kami terus berinovasi dalam pelayanan publik, memanfaatkan teknologi untuk mempermudah akses masyarakat terhadap layanan kepolisian yang cepat, mudah, dan transparan.</p>
+                @if($profile['sambutan'])
+                    {!! $profile['sambutan'] !!}
+                @else
+                    <p>Selamat datang di website resmi {{ $profile['nama_instansi'] }}. Website ini menjadi sarana informasi publik dan bentuk komitmen kami dalam memberikan pelayanan terbaik kepada seluruh masyarakat Gunungkidul.</p>
+                    <p>Kami hadir untuk memberikan rasa aman, menjaga ketertiban, serta menegakkan hukum dengan profesionalisme dan integritas tinggi.</p>
+                @endif
             </div>
         </div>
     </div>
+
+    {{-- VISI & MISI --}}
     <div class="card">
         <div class="card-title">Visi &amp; Misi</div>
         <div class="vm-grid">
-            <div class="vm-box"><h4>Visi</h4><p>{{ $profile['visi'] }}</p></div>
+            <div class="vm-box">
+                <h4>Visi</h4>
+                <p>{{ $profile['visi'] }}</p>
+            </div>
             <div class="vm-box">
                 <h4>Misi</h4>
-                <ul class="mission-list">
-                    @foreach($profile['misi'] as $misi)<li>{{ $misi }}</li>@endforeach
-                </ul>
+                @if(count($profile['misi']) > 0)
+                    <ul class="mission-list">
+                        @foreach($profile['misi'] as $misi)
+                            <li>{{ $misi }}</li>
+                        @endforeach
+                    </ul>
+                @else
+                    <p>Belum ada data misi.</p>
+                @endif
             </div>
         </div>
     </div>
+
+    {{-- SEJARAH --}}
+    @if($profile['sejarah'])
+    <div class="card">
+        <div class="card-title">Sejarah</div>
+        <div class="sejarah-content">
+            {!! $profile['sejarah'] !!}
+        </div>
+    </div>
+    @endif
+
+    {{-- STRUKTUR ORGANISASI --}}
     <div class="card">
         <div class="card-title">Struktur Organisasi</div>
-        <img src="{{ asset('images/STRUKTUR_ORGANISASI_POLRES.png') }}" class="struktur-img" onerror="this.style.background='var(--surface)'; this.style.height='200px';">
+        @if($profile['struktur_organisasi'])
+            <img src="{{ Storage::url($profile['struktur_organisasi']) }}" class="struktur-img" alt="Struktur Organisasi" onerror="this.style.background='var(--surface)'; this.style.height='200px';">
+        @else
+            <img src="{{ asset('images/STRUKTUR_ORGANISASI_POLRES.png') }}" class="struktur-img" alt="Struktur Organisasi" onerror="this.style.background='var(--surface)'; this.style.height='200px';">
+        @endif
     </div>
+
 </div>
 
 {{-- FOOTER --}}
@@ -292,12 +307,16 @@ html.dark .wx-bar { background:#080f1a; }
             </div>
             <div class="footer-col">
                 <h5>Kontak</h5>
-                <p>📧 {{ $contact['email'] }}</p><p>📞 {{ $contact['phone'] }}</p>
-                <p>🚨 {{ $contact['hotline'] }}</p><p>🕐 {{ $contact['hours'] }}</p>
+                <p>📧 {{ $contact['email'] }}</p>
+                <p>📞 {{ $contact['phone'] }}</p>
+                <p>🚨 {{ $contact['hotline'] }}</p>
+                <p>🕐 {{ $contact['hours'] }}</p>
             </div>
             <div class="footer-col">
                 <h5>Navigasi</h5>
-                @foreach($aboutLinks as $link)<a href="{{ $link['url'] }}">{{ $link['name'] }}</a>@endforeach
+                @foreach($aboutLinks as $link)
+                    <a href="{{ $link['url'] }}">{{ $link['name'] }}</a>
+                @endforeach
             </div>
         </div>
         <div class="footer-bottom">
@@ -311,7 +330,6 @@ html.dark .wx-bar { background:#080f1a; }
 
 @push('scripts')
 <script>
-// ===== DARK MODE =====
 (function () {
     const html = document.documentElement;
     const btn  = document.getElementById('darkToggle');
@@ -329,7 +347,6 @@ html.dark .wx-bar { background:#080f1a; }
     }
 })();
 
-// ===== CUACA REAL-TIME =====
 (function () {
     const LAT = -7.9408, LON = 110.5993, TZ = 'Asia%2FJakarta';
     const WMO = {

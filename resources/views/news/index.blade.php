@@ -7,40 +7,23 @@
 <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
     :root { --navy:#0a1628;--blue:#1a3a6e;--accent:#2563eb;--gold:#f0a500;--gold-lt:#fbbf24;--surface:#f4f6fa;--white:#ffffff;--text:#1a1f2e;--muted:#6b7280;--border:#e2e8f0; }
-
-    /* ===== DARK MODE ===== */
-    html.dark {
-        --surface: #0f1923;
-        --white:   #1a2535;
-        --text:    #e2e8f0;
-        --muted:   #94a3b8;
-        --border:  #1e2d42;
+    html.dark { --surface: #0f1923; --white: #1a2535; --text: #e2e8f0; --muted: #94a3b8; --border: #1e2d42; }
+    body, .news-card, .news-list-item, .filter-tab, .view-toggle, .page-btn, .result-count, .card-title, .card-excerpt, .list-title, .list-excerpt {
+        transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
     }
-
-    body, .news-card, .news-list-item, .filter-tab,
-    .view-toggle, .page-btn, .result-count,
-    .card-title, .card-excerpt, .list-title, .list-excerpt {
-        transition: background-color 0.3s ease, color 0.3s ease,
-                    border-color 0.3s ease, box-shadow 0.3s ease;
-    }
-
     body { font-family: 'Plus Jakarta Sans', sans-serif; background: var(--surface); color: var(--text); overflow-x: hidden; }
     html.dark body { background: var(--surface); color: var(--text); }
-
     header { background:var(--navy); padding:0 56px; display:flex; justify-content:space-between; align-items:center; height:72px; position:sticky; top:0; z-index:1000; border-bottom:1px solid rgba(255,255,255,0.06); }
     .logo { display:flex; align-items:center; gap:14px; text-decoration:none; }
     .logo img { width:44px; height:44px; object-fit:contain; }
     .logo-text { display:flex; flex-direction:column; }
     .logo-text span:first-child { font-size:15px; font-weight:800; color:var(--white); line-height:1.2; }
     .logo-text span:last-child { font-size:11px; color:var(--gold); font-weight:500; letter-spacing:0.8px; text-transform:uppercase; }
-
     .header-right { display:flex; align-items:center; gap:4px; }
     nav ul { display:flex; list-style:none; gap:4px; }
     nav ul li a { text-decoration:none; color:rgba(255,255,255,0.65); font-size:13.5px; font-weight:600; padding:8px 16px; border-radius:8px; transition:all 0.2s; display:block; }
     nav ul li a:hover { color:var(--white); background:rgba(255,255,255,0.08); }
     nav ul li a.active { color:var(--white); background:var(--accent); }
-
-    /* ===== DARK MODE TOGGLE ===== */
     .dark-toggle { width:38px; height:38px; border-radius:10px; background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.12); color:rgba(255,255,255,0.7); cursor:pointer; display:flex; align-items:center; justify-content:center; transition:all 0.25s; flex-shrink:0; margin-left:8px; outline:none; }
     .dark-toggle:hover { background:rgba(255,255,255,0.14); color:var(--gold-lt); border-color:rgba(240,165,0,0.4); }
     .dark-toggle svg { transition:transform 0.45s ease; pointer-events:none; }
@@ -49,8 +32,6 @@
     .dark-toggle .icon-sun  { display:none; }
     html.dark .dark-toggle .icon-moon { display:none; }
     html.dark .dark-toggle .icon-sun  { display:block; }
-
-    /* ===== HERO ===== */
     .hero { position:relative; overflow:hidden; height:480px; }
     .hero-bg { position:absolute; inset:0; }
     .hero-bg img { width:100%; height:100%; object-fit:cover; display:block; }
@@ -73,8 +54,6 @@
     .search-input:focus { border-color:var(--gold); background:rgba(255,255,255,0.16); }
     .search-btn { padding:12px 22px; background:var(--accent); color:var(--white); border:none; border-radius:10px; font-family:inherit; font-size:13.5px; font-weight:700; cursor:pointer; transition:all 0.2s; white-space:nowrap; }
     .search-btn:hover { background:#1d4ed8; transform:translateY(-1px); box-shadow:0 8px 24px rgba(37,99,235,0.4); }
-
-    /* ===== MAIN ===== */
     .main-wrap { max-width:1100px; margin:0 auto; padding:40px 40px 80px; }
     .toolbar { display:flex; align-items:center; justify-content:space-between; gap:16px; margin-bottom:28px; flex-wrap:wrap; }
     .filter-tabs { display:flex; gap:8px; flex-wrap:wrap; }
@@ -83,7 +62,6 @@
     .filter-tab.active { background:var(--accent); border-color:var(--accent); color:var(--white); }
     html.dark .filter-tab { background:#1a2535; border-color:#1e2d42; color:#94a3b8; }
     html.dark .filter-tab:hover { border-color:#60a5fa; color:#60a5fa; }
-
     .toolbar-right { display:flex; align-items:center; gap:12px; }
     .result-count { font-size:13px; color:var(--muted); }
     .result-count strong { color:var(--text); }
@@ -92,15 +70,12 @@
     .view-btn { width:32px; height:32px; border-radius:6px; border:none; background:transparent; cursor:pointer; display:flex; align-items:center; justify-content:center; transition:all 0.2s; color:var(--muted); }
     .view-btn.active { background:var(--navy); color:var(--white); }
     .view-btn:hover:not(.active) { background:var(--surface); }
-
     .news-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
     .news-list { display:flex; flex-direction:column; gap:14px; }
-
     .news-card { background:var(--white); border-radius:18px; border:1px solid var(--border); overflow:hidden; display:flex; flex-direction:column; text-decoration:none; color:inherit; transition:transform 0.25s,box-shadow 0.25s,border-color 0.25s,background-color 0.3s; }
     .news-card:hover { transform:translateY(-5px); box-shadow:0 18px 44px rgba(10,22,40,0.11); border-color:transparent; }
     html.dark .news-card { background:#1a2535; border-color:#1e2d42; }
     html.dark .news-card:hover { box-shadow:0 18px 44px rgba(0,0,0,0.4); border-color:#2d3e55; }
-
     .card-image { width:100%; height:200px; background:var(--blue); overflow:hidden; position:relative; flex-shrink:0; }
     .card-image img { width:100%; height:100%; object-fit:cover; display:block; transition:transform 0.4s; }
     .news-card:hover .card-image img { transform:scale(1.05); }
@@ -119,7 +94,6 @@
     .card-readmore { display:inline-flex; align-items:center; gap:5px; font-size:12.5px; font-weight:700; color:var(--accent); margin-top:8px; transition:gap 0.2s; }
     html.dark .card-readmore { color:#60a5fa; }
     .news-card:hover .card-readmore { gap:9px; }
-
     .news-list-item { background:var(--white); border-radius:14px; border:1px solid var(--border); overflow:hidden; display:flex; text-decoration:none; color:inherit; transition:transform 0.2s,box-shadow 0.2s,border-color 0.2s,background-color 0.3s; }
     .news-list-item:hover { transform:translateX(4px); box-shadow:0 8px 28px rgba(10,22,40,0.09); border-color:transparent; }
     html.dark .news-list-item { background:#1a2535; border-color:#1e2d42; }
@@ -139,13 +113,11 @@
     .list-readmore { display:inline-flex; align-items:center; gap:5px; font-size:13px; font-weight:700; color:var(--accent); margin-top:4px; transition:gap 0.2s; }
     html.dark .list-readmore { color:#60a5fa; }
     .news-list-item:hover .list-readmore { gap:9px; }
-
     .empty-state { text-align:center; padding:80px 20px; display:none; }
     .empty-state-icon { font-size:56px; margin-bottom:16px; }
     .empty-state h3 { font-size:20px; font-weight:800; color:var(--text); margin-bottom:8px; }
     .empty-state p { font-size:14px; color:var(--muted); }
     .empty-state.visible { display:block; }
-
     .pagination-wrap { display:flex; justify-content:center; align-items:center; gap:6px; margin-top:48px; flex-wrap:wrap; }
     .page-btn { width:38px; height:38px; border-radius:9px; border:1.5px solid var(--border); background:var(--white); font-family:inherit; font-size:13.5px; font-weight:600; color:var(--text); cursor:pointer; display:flex; align-items:center; justify-content:center; transition:all 0.2s; }
     .page-btn:hover:not(:disabled):not(.active) { border-color:var(--accent); color:var(--accent); }
@@ -155,8 +127,6 @@
     .page-dots { color:var(--muted); padding:0 4px; font-size:14px; }
     html.dark .page-btn { background:#1a2535; border-color:#1e2d42; color:#e2e8f0; }
     html.dark .page-btn:hover:not(:disabled):not(.active) { border-color:#60a5fa; color:#60a5fa; }
-
-    /* ===== FOOTER ===== */
     footer { background:var(--navy); color:var(--white); padding:0; }
     html.dark footer { background:#060d18; }
     .footer-location { background:#0d1e38; border-bottom:1px solid rgba(255,255,255,0.06); padding:20px 56px; }
@@ -176,8 +146,6 @@
     .footer-col a,.footer-col p { display:block; font-size:13.5px; color:rgba(255,255,255,0.5); text-decoration:none; line-height:2.2; transition:color 0.2s; }
     .footer-col a:hover { color:var(--white); }
     .footer-bottom { max-width:1100px; margin:0 auto; display:flex; justify-content:space-between; align-items:center; font-size:12.5px; color:rgba(255,255,255,0.3); }
-
-    /* ===== WEATHER BAR ===== */
     .wx-bar { background: #0d1e38; border-bottom: 1px solid rgba(255,255,255,0.07); padding: 0 56px; height: 52px; display: flex; align-items: center; gap: 0; overflow: hidden; }
     html.dark .wx-bar { background:#080f1a; }
     .wx-bar-current { display: flex; align-items: center; gap: 10px; flex-shrink: 0; padding-right: 20px; border-right: 1px solid rgba(255,255,255,0.08); height: 32px; }
@@ -204,30 +172,15 @@
     @keyframes wxSpin { to { transform: rotate(360deg); } }
     .wx-sk { background: rgba(255,255,255,0.07); border-radius: 6px; animation: wxPulse 1.6s ease-in-out infinite; display: inline-block; }
     @keyframes wxPulse { 0%,100%{opacity:.4} 50%{opacity:.9} }
-
-    /* ===== RESPONSIVE ===== */
-    @media (max-width:900px) {
-        .news-grid{grid-template-columns:repeat(2,1fr)} header{padding:0 24px}
-        .main-wrap{padding:32px 24px 64px} .hero{height:400px} .hero h1{font-size:38px}
-        .hero-inner{padding:0 32px} .footer-location{padding:18px 28px}
-        .footer-main{padding:44px 28px 28px} .footer-grid{grid-template-columns:1fr 1fr}
-    }
+    @media (max-width:900px) { .news-grid{grid-template-columns:repeat(2,1fr)} header{padding:0 24px} .main-wrap{padding:32px 24px 64px} .hero{height:400px} .hero h1{font-size:38px} .hero-inner{padding:0 32px} .footer-location{padding:18px 28px} .footer-main{padding:44px 28px 28px} .footer-grid{grid-template-columns:1fr 1fr} }
     @media (max-width:768px) { .wx-bar{padding:0 20px} .wx-bar-current{padding-right:12px} .wx-bar-desc{display:none} }
-    @media (max-width:640px) {
-        .news-grid{grid-template-columns:1fr} .list-image{width:120px} .list-title{font-size:15px}
-        .toolbar{flex-direction:column;align-items:flex-start} .hero{height:320px}
-        .hero h1{font-size:28px} .hero-inner{padding:0 20px} .search-wrap{flex-direction:column}
-        .footer-location-inner{flex-direction:column;align-items:flex-start}
-        .maps-btn{width:100%;justify-content:center} .footer-grid{grid-template-columns:1fr}
-        .footer-bottom{flex-direction:column;gap:8px;text-align:center} nav ul li a{padding:7px 10px;font-size:12px}
-    }
+    @media (max-width:640px) { .news-grid{grid-template-columns:1fr} .list-image{width:120px} .list-title{font-size:15px} .toolbar{flex-direction:column;align-items:flex-start} .hero{height:320px} .hero h1{font-size:28px} .hero-inner{padding:0 20px} .search-wrap{flex-direction:column} .footer-location-inner{flex-direction:column;align-items:flex-start} .maps-btn{width:100%;justify-content:center} .footer-grid{grid-template-columns:1fr} .footer-bottom{flex-direction:column;gap:8px;text-align:center} nav ul li a{padding:7px 10px;font-size:12px} }
     @media (max-width:480px) { .wx-bar-meta{display:none} }
 </style>
 @endpush
 
 @section('content')
 
-{{-- HEADER --}}
 <header>
     <a href="{{ route('home') }}" class="logo">
         <img src="{{ asset('images/new.PNG') }}" alt="Logo Polri">
@@ -252,7 +205,6 @@
     </div>
 </header>
 
-{{-- WEATHER BAR --}}
 <div class="wx-bar" id="wxBar">
     <div class="wx-bar-current">
         <div class="wx-bar-icon" id="wxIcon">⏳</div>
@@ -279,10 +231,15 @@
     </button>
 </div>
 
-{{-- HERO --}}
+{{-- HERO: diganti dari static img ke DB --}}
 <section class="hero">
     <div class="hero-bg">
-        <img src="{{ asset('images/slideshow/news.jpg') }}" alt="Tribratanews Polres Gunungkidul">
+        @if($heroSlides->isNotEmpty())
+            <img src="{{ Storage::disk('public')->url($heroSlides->first()->foto) }}"
+                 alt="{{ $heroSlides->first()->caption ?? 'Tribratanews Polres Gunungkidul' }}">
+        @else
+            <img src="{{ asset('images/slideshow/news.jpg') }}" alt="Tribratanews Polres Gunungkidul">
+        @endif
     </div>
     <div class="hero-inner">
         <div class="hero-tag">Portal Berita</div>
@@ -303,7 +260,6 @@
     </div>
 </section>
 
-{{-- MAIN --}}
 <div class="main-wrap">
     <div class="toolbar">
         <div class="filter-tabs" id="filterTabs">
@@ -335,7 +291,6 @@
     <div class="pagination-wrap" id="paginationWrap"></div>
 </div>
 
-{{-- FOOTER --}}
 <footer>
     <div class="footer-location">
         <div class="footer-location-inner">
@@ -387,7 +342,6 @@
 
 @push('scripts')
 <script>
-// ===== DARK MODE =====
 (function () {
     const html = document.documentElement;
     const btn  = document.getElementById('darkToggle');
@@ -405,25 +359,9 @@
     }
 })();
 
-// ===== NEWS DATA & RENDER =====
-const ALL_NEWS = [
-    { slug:'operasi-ketertiban-lalu-lintas', title:'Operasi Ketertiban Lalu Lintas Gabungan', excerpt:'Kepolisian mengadakan operasi gabungan untuk meningkatkan keselamatan dan ketertiban masyarakat di seluruh wilayah Gunungkidul.', date:'10 Februari 2026', category:'lalu_lintas', icon:'🚦', images:[] },
-    { slug:'pelayanan-sim-online', title:'Pelayanan SIM Online Kini Lebih Mudah', excerpt:'Kini masyarakat dapat memperpanjang SIM secara online melalui layanan resmi Digital Korlantas Polri tanpa antrian panjang.', date:'08 Februari 2026', category:'pelayanan', icon:'🆔', images:[] },
-    { slug:'program-polisi-sahabat-anak', title:'Program Polisi Sahabat Anak Hadir di Gunungkidul', excerpt:'Inisiatif terbaru untuk mendekatkan diri dengan generasi muda dan memberikan edukasi keamanan sejak dini kepada anak-anak.', date:'05 Februari 2026', category:'sosial', icon:'👮', images:[] },
-    { slug:'bakti-sosial-polres-gunungkidul', title:'Bakti Sosial Polres Gunungkidul untuk Warga Kurang Mampu', excerpt:'Polres Gunungkidul menggelar bakti sosial pembagian sembako dan layanan kesehatan gratis bagi warga yang membutuhkan.', date:'02 Februari 2026', category:'sosial', icon:'🤝', images:[] },
-    { slug:'patroli-malam-kamtibmas', title:'Patroli Malam Rutin Jaga Keamanan Wilayah', excerpt:'Unit Samapta Polres Gunungkidul rutin melaksanakan patroli malam untuk memastikan keamanan dan ketertiban di seluruh wilayah.', date:'28 Januari 2026', category:'umum', icon:'🚓', images:[] },
-    { slug:'sosialisasi-narkoba-di-sekolah', title:'Sosialisasi Bahaya Narkoba di SMA se-Gunungkidul', excerpt:'Satuan Narkoba Polres Gunungkidul menggelar sosialisasi bahaya narkoba kepada pelajar di berbagai sekolah menengah atas.', date:'25 Januari 2026', category:'sosial', icon:'📢', images:[] },
-    { slug:'penangkapan-pelaku-curanmor', title:'Polres Gunungkidul Berhasil Tangkap Pelaku Curanmor', excerpt:'Tim Reskrim Polres Gunungkidul berhasil mengungkap jaringan pencurian kendaraan bermotor yang beroperasi di tiga kecamatan.', date:'20 Januari 2026', category:'kriminal', icon:'🔒', images:[] },
-    { slug:'skck-online-gunungkidul', title:'Layanan SKCK Online Semakin Cepat dan Mudah', excerpt:'Polres Gunungkidul terus berinovasi dalam pelayanan SKCK online agar masyarakat tidak perlu antri lama di kantor polisi.', date:'15 Januari 2026', category:'pelayanan', icon:'📋', images:[] },
-    { slug:'apel-perdana-tahun-2026', title:'Apel Perdana 2026: Polres Siap Tingkatkan Profesionalisme', excerpt:'Kapolres Gunungkidul memimpin apel perdana tahun 2026 dan menegaskan komitmen seluruh personel untuk meningkatkan pelayanan.', date:'02 Januari 2026', category:'umum', icon:'🏋️', images:[] },
-    { slug:'pengamanan-nataru-2025', title:'Pengamanan Natal dan Tahun Baru 2025 Berjalan Aman', excerpt:'Seluruh personel Polres Gunungkidul berhasil mengamankan perayaan Natal dan Tahun Baru dengan zero insiden keamanan.', date:'01 Januari 2026', category:'umum', icon:'🛡️', images:[] },
-    { slug:'tilang-elektronik-mulai-berlaku', title:'Tilang Elektronik (ETLE) Mulai Berlaku di Gunungkidul', excerpt:'Polres Gunungkidul resmi mengoperasikan sistem tilang elektronik untuk meningkatkan kepatuhan berlalu lintas secara modern.', date:'20 Desember 2025', category:'lalu_lintas', icon:'📷', images:[] },
-    { slug:'donor-darah-polres-gunungkidul', title:'Donor Darah Massal: Polres Sumbang 150 Kantong Darah', excerpt:'Dalam rangka HUT Bhayangkara, Polres Gunungkidul menggelar donor darah massal yang diikuti 200 personel dan masyarakat umum.', date:'10 Desember 2025', category:'sosial', icon:'💉', images:[] },
-];
-
+const ALL_NEWS = @json($news);
 let currentView='grid', currentCategory='semua', currentSearch='', currentPage=1;
 const PER_PAGE = 6;
-
 function getFiltered() {
     return ALL_NEWS.filter(i =>
         (currentCategory === 'semua' || i.category === currentCategory) &&
@@ -433,14 +371,14 @@ function getFiltered() {
 function getPaginated(f) { const s = (currentPage - 1) * PER_PAGE; return f.slice(s, s + PER_PAGE); }
 function catLabel(c) { return {umum:'Umum',lalu_lintas:'Lalu Lintas',sosial:'Sosial',pelayanan:'Pelayanan',kriminal:'Kriminal'}[c] || c; }
 function catBg(c) { return {umum:'cat-umum',lalu_lintas:'cat-lalu_lintas',sosial:'cat-sosial',pelayanan:'cat-pelayanan',kriminal:'cat-kriminal'}[c] || 'cat-umum'; }
-function imageOrPlaceholder(item) {
+function imageOrPlaceholder(item, cardClass) {
     if (item.images && item.images.length > 0)
-        return `<img src="{{ asset('/') }}${item.images[0]}" alt="${item.title}" onerror="this.parentElement.innerHTML='<div class=\\'card-image-placeholder ${catBg(item.category)}\\'>${item.icon}</div>'">`;
-    return `<div class="card-image-placeholder ${catBg(item.category)}">${item.icon}</div>`;
+        return `<img src="{{ asset('/') }}${item.images[0]}" alt="${item.title}" onerror="this.parentElement.innerHTML='<div class=\\'${cardClass} ${catBg(item.category)}\\'>${item.icon}</div>'">`;
+    return `<div class="${cardClass} ${catBg(item.category)}">${item.icon}</div>`;
 }
 function renderCard(item) {
     return `<a href="{{ url('/news') }}/${item.slug}" class="news-card">
-        <div class="card-image">${imageOrPlaceholder(item)}<span class="card-cat-badge">${catLabel(item.category)}</span></div>
+        <div class="card-image">${imageOrPlaceholder(item, 'card-image-placeholder')}<span class="card-cat-badge">${catLabel(item.category)}</span></div>
         <div class="card-body">
             <span class="card-date">${item.date}</span>
             <div class="card-title">${item.title}</div>
@@ -451,7 +389,7 @@ function renderCard(item) {
 }
 function renderListItem(item) {
     return `<a href="{{ url('/news') }}/${item.slug}" class="news-list-item">
-        <div class="list-image ${catBg(item.category)}">${imageOrPlaceholder(item)}</div>
+        <div class="list-image ${catBg(item.category)}">${imageOrPlaceholder(item, 'list-image-placeholder')}</div>
         <div class="list-body">
             <div class="list-meta"><span class="list-date">${item.date}</span><span class="list-cat">${catLabel(item.category)}</span></div>
             <div class="list-title">${item.title}</div>
@@ -505,7 +443,6 @@ function setView(mode) {
 }
 render();
 
-// ===== CUACA REAL-TIME =====
 (function () {
     const LAT = -7.9408, LON = 110.5993, TZ = 'Asia%2FJakarta';
     const WMO = {
