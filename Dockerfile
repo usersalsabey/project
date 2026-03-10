@@ -1,7 +1,7 @@
 FROM php:8.2-cli
 
 RUN apt-get update && apt-get install -y \
-    curl zip unzip git libicu-dev libzip-dev libxml2-dev \
+    curl zip unzip git libicu-dev libzip-dev libxml2-dev libonig-dev \
     && docker-php-ext-install intl zip pdo pdo_mysql mbstring xml \
     && apt-get clean
 
