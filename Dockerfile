@@ -1,21 +1,35 @@
-FROM php:8.2-cli
+FROM php:8.2-apache
 
-RUN apt-get update && apt-get install -y \
-    curl zip unzip git libicu-dev libzip-dev libxml2-dev libonig-dev \
-    && docker-php-ext-install intl zip pdo pdo_mysql mbstring xml \
-    && apt-get clean
+# Install extension installer (pre-compiled, jauh lebih cepat)
+COPY --from=mlocati/php-extension-installer /usr/bin/install-php-extensions /usr/local/bin/
 
-COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+# Install PHP extensions
+RUN install-php-extensions intl zip pdo pdo_mysql mbstring xml opcache bcmath ctype fileinfo tokenizer
 
-WORKDIR /app
+# Enable Apache mod_rewrite
+RUN a2enmod rewrite
+
+# Install composer
+COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
+
+# Set working directory
+WORKDIR /var/www/html
+
+# Copy project files
 COPY . .
 
-RUN composer install --no-dev --optimize-autoloader --no-scripts --no-interaction
+# Install dependencies
+RUN composer install --no-dev --optimize-autoloader --no-interaction
 
-RUN php artisan config:cache || true
-RUN php artisan route:cache || true
-RUN php artisan view:cache || true
+# Set permissions
+RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache \
+    && chmod -R 775 /var/www/html/storage /var/www/html/bootstrap/cache
 
-EXPOSE 8000
+# Apache config: point DocumentRoot to /public
+RUN sed -i 's|DocumentRoot /var/www/html|DocumentRoot /var/www/html/public|g' /etc/apache2/sites-available/000-default.conf \
+    && echo '<Directory /var/www/html/public>\n    AllowOverride All\n    Require all granted\n</Directory>' >> /etc/apache2/apache2.conf
 
-CMD php artisan migrate --force && php artisan storage:link && php artisan serve --host=0.0.0.0 --port=${PORT:-8000}
+# Expose port
+EXPOSE 80
+
+CMD ["apache2-foreground"]
