@@ -17,6 +17,9 @@ RUN composer install --no-dev --optimize-autoloader --no-interaction
 RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache \
     && chmod -R 775 /var/www/html/storage /var/www/html/bootstrap/cache
 
+# Fix PHP-FPM biar mau baca env variables
+RUN echo "clear_env = no" >> /usr/local/etc/php-fpm.d/www.conf
+
 RUN echo 'server { \
     listen 80; \
     root /var/www/html/public; \
