@@ -17,7 +17,6 @@ RUN composer install --no-dev --optimize-autoloader --no-interaction
 RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache \
     && chmod -R 775 /var/www/html/storage /var/www/html/bootstrap/cache
 
-# Fix PHP-FPM biar mau baca env variables
 RUN echo "clear_env = no" >> /usr/local/etc/php-fpm.d/www.conf
 
 RUN echo 'server { \
@@ -36,4 +35,8 @@ RUN echo '[supervisord]\nnodaemon=true\n\n[program:php-fpm]\ncommand=php-fpm\n\n
 
 EXPOSE 80
 
-CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf"]
+# Buat .env saat container start, baru jalankan server
+CMD cp .env.example .env && \
+    php artisan key:generate --force && \
+    php artisan config:clear && \
+    /usr/bin/supervisord -c /etc/supervisor/conf.d/supervisord.conf
