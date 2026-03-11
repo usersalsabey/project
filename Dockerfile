@@ -35,8 +35,4 @@ RUN echo '[supervisord]\nnodaemon=true\n\n[program:php-fpm]\ncommand=php-fpm\n\n
 
 EXPOSE 80
 
-# Buat .env saat container start, baru jalankan server
-CMD cp .env.example .env && \
-    php artisan key:generate --force && \
-    php artisan config:clear && \
-    /usr/bin/supervisord -c /etc/supervisor/conf.d/supervisord.conf
+CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf"]
