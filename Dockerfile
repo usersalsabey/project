@@ -4,8 +4,9 @@ COPY --from=mlocati/php-extension-installer /usr/bin/install-php-extensions /usr
 
 RUN install-php-extensions intl zip pdo pdo_mysql mbstring xml opcache bcmath ctype fileinfo tokenizer
 
-# ⬇️ Tambah ini: disable mpm_event, aktifkan mpm_prefork aja
-RUN a2dismod mpm_event && a2enmod mpm_prefork rewrite
+# Force disable semua MPM dulu, baru enable prefork aja
+RUN a2dismod mpm_event mpm_worker mpm_prefork 2>/dev/null || true \
+    && a2enmod mpm_prefork rewrite
 
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
