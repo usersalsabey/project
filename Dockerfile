@@ -29,9 +29,8 @@ RUN echo 'server {\n\
     }\n\
 }' > /etc/nginx/sites-available/default
 
-# Buat startup script
-RUN echo '#!/bin/bash\nphp-fpm -D\nnginx -g "daemon off;"' > /start.sh \
-    && chmod +x /start.sh
+COPY start.sh /start.sh
+RUN chmod +x /start.sh
 
 EXPOSE 80
 
