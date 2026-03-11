@@ -19,17 +19,17 @@ RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cac
 
 RUN echo "clear_env = no" >> /usr/local/etc/php-fpm.d/www.conf
 
-RUN echo 'server { \
-    listen 80; \
-    root /var/www/html/public; \
-    index index.php; \
-    location / { try_files $uri $uri/ /index.php?$query_string; } \
-    location ~ \.php$ { \
-        fastcgi_pass 127.0.0.1:9000; \
-        fastcgi_param SCRIPT_FILENAME $realpath_root$fastcgi_script_name; \
-        include fastcgi_params; \
-    } \
-}' > /etc/nginx/sites-available/default
+RUN printf 'server {\n\
+    listen 80;\n\
+    root /var/www/html/public;\n\
+    index index.php;\n\
+    location / { try_files $uri $uri/ /index.php?$query_string; }\n\
+    location ~ \\.php$ {\n\
+        fastcgi_pass localhost:9000;\n\
+        fastcgi_param SCRIPT_FILENAME $realpath_root$fastcgi_script_name;\n\
+        include fastcgi_params;\n\
+    }\n\
+}\n' > /etc/nginx/sites-available/default
 
 RUN echo '[supervisord]\nnodaemon=true\n\n[program:php-fpm]\ncommand=php-fpm\nstdout_logfile=/dev/stdout\nstdout_logfile_maxbytes=0\nstderr_logfile=/dev/stderr\nstderr_logfile_maxbytes=0\n\n[program:nginx]\ncommand=nginx -g "daemon off;"\nstdout_logfile=/dev/stdout\nstdout_logfile_maxbytes=0\nstderr_logfile=/dev/stderr\nstderr_logfile_maxbytes=0' > /etc/supervisor/conf.d/supervisord.conf
 
